@@ -1,4 +1,4 @@
-package bank;
+package Hospital;
 
 import controllers.receiverGateway;
 import controllers.senderGateway;

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  *
- * This class stores all information about an request from a bank to offer
+ * This class stores all information about an request from a Hospital to offer
  * a loan to a specific client.
  */
 public class DocInterestRequest implements Serializable{

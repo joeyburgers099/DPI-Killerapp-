@@ -1,4 +1,4 @@
-package loanbroker;
+package Prison;
 
 import model.loan.*;
 import model.bank.*;

@@ -1,4 +1,5 @@
-package bank;
+package Hospital;
+
 import controllers.receiverGateway;
 import controllers.senderGateway;
 import interfaces.IsenderGateway;
@@ -6,7 +7,8 @@ import messaging.requestreply.HealthCheckReply;
 import model.bank.DocInterestReply;
 import model.bank.DocInterestRequest;
 
-import javax.jms.*;
+import javax.jms.JMSException;
+import javax.jms.ObjectMessage;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -17,7 +19,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Doc1 extends JFrame implements Observer {
+public class Doc2 extends JFrame implements Observer {
 
     private static final long serialVersionUID = 1L;
     private IsenderGateway sendergateway;
@@ -32,7 +34,7 @@ public class Doc1 extends JFrame implements Observer {
             public void run() {
                 try {
                     System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
-                    Doc1 frame = new Doc1();
+                    Doc2 frame = new Doc2();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -42,11 +44,11 @@ public class Doc1 extends JFrame implements Observer {
     }
 
 
-    public Doc1() {
+    public Doc2() {
         sendergateway = new senderGateway();
-        receivergateway = new receiverGateway("toABN");
+        receivergateway = new receiverGateway("toING");
         receivergateway.addObserver(this::update);
-        setTitle("JMS Bank - Doc1 AMRO");
+        setTitle("JMS Bank - Doc2");
 
         waitingForReply = new ArrayList<>();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +98,7 @@ public class Doc1 extends JFrame implements Observer {
             public void actionPerformed(ActionEvent e) {
                 HealthCheckReply<DocInterestRequest, DocInterestReply> rr = list.getSelectedValue();
                 double interest = Double.parseDouble((tfReply.getText()));
-                DocInterestReply reply = new DocInterestReply(interest,"Doc1 AMRO");
+                DocInterestReply reply = new DocInterestReply(interest,"Doc2");
                 if (rr!= null && reply != null){
                     rr.setReply(reply);
                     list.repaint();

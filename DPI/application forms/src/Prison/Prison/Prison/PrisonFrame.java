@@ -1,4 +1,4 @@
-package loanbroker;
+package Prison;
 
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;

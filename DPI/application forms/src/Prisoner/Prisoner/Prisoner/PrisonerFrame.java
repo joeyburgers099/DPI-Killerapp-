@@ -1,4 +1,4 @@
-package loanclient;
+package Prisoner;
 
 import controllers.receiverGateway;
 import controllers.senderGateway;
